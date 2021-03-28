@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -50,15 +49,6 @@ print("accuracy: ", sum(pred_rf == y_test) * 100 / len(pred_rf), '%')
 # confusion matrix using random forest
 cm = confusion_matrix(y_test, pred_rf)
 print(cm)
-
-# matplot for confusion matrix
-fig = plt.figure(figsize=(10, 6))
-plt.matshow(cm, cmap=plt.cm.binary, interpolation='nearest')
-plt.title('Confusion Matrix')
-plt.colorbar()
-plt.ylabel('expected label')
-plt.xlabel('predicted label')
-plt.show
 
 # dumping the model to the disk
 pickle.dump(rf, open('wine_model.pkl', 'wb'))
