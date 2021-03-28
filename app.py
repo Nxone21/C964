@@ -54,7 +54,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-wineML = pickle.load(open('../wine_model.pkl', 'rb'))
+wineML = pickle.load(open('wine_model.pkl', 'rb'))
 
 
 @app.route('/results', methods=['GET', 'POST'])
