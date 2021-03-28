@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+    <!-- Link to Bootstrap Stylesheet -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">#grad1 {
+				background-color: #F66733; /* For browsers that do not support gradients */
+				background-image: linear-gradient(to bottom right, #522D80, #F66733); /* Standard syntax (must be last) */
+				}
+	</style>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+
+    <title>El Vino Winery</title>
+</head>
+<body class="bg-dark">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">El Vino Winery Labs</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Quality Predictor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="grad1" class="row row-cols-1">
+        <div class="col center-block text-center">
+            <img src="{{ url_for('static', filename='images/logo21.png') }}" class="pb-1" width="200" height="200">
+            <div class="row row-cols-12 justify-content-center center-block">
+                <form action="{{ url_for('home') }}" class="form-horizontal border-light rounded rounded-3 bg-light">
+                    <h1 align="center" style="color: var(--purple);">Wine Quality Prediction Results</h1>
+                    <p class="text-center p-3">Based on the attributes you entered, it is predicted that the quality of this wine will be:<br>
+                    <h4 align="center">{{ result }}</h4><br>
+                    Outcome Accuracy: 81%</p>
+                    <center><button class="btn btn-lg btn-block col-4" type="submit" href="main" style="background-color: darkmagenta; color: var(--light)">Try Again</button><br></center>
+                </form>
+            </div>
+        </div>
+        <div class="row"><p></p></div>
+    </div>
+
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+</html>

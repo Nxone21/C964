@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+    <!-- Link to Bootstrap Stylesheet -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">#grad1 {
+				background-color: #F66733; /* For browsers that do not support gradients */
+				background-image: linear-gradient(to bottom right, #522D80, #F66733); /* Standard syntax (must be last) */
+				}
+	</style>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+
+    <title>El Vino Winery</title>
+</head>
+<body class="bg-dark">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">El Vino Winery Labs</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Quality Predictor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="grad1" class="row row-cols-1">
+        <div class="col center-block text-center">
+            <img src="{{ url_for('static', filename='images/logo21.png') }}" class="pb-1" width="200" height="200">
+            <div class="row row-cols-12 justify-content-center center-block">
+                <form action="{{ url_for('results') }}" method="POST" class="form-horizontal border-light rounded rounded-3 bg-light">
+                    <h1 align="center" style="color: var(--purple);">Wine Quality Predictor</h1>
+                    <p class="text-md-left p-3">Using the inputs below, the wine quality prediction tool uses a random forrest classifier to predict the wine quality.<br>
+                    This prediction is shown as either Okay or Great for any combination of attributes.</p>
+                    <center>
+                    <div class="form-group">
+                        <div class="row row-cols-sm-2">
+                            <div class="col-sm-6">
+                                <label for="volacid">Volatile Acidity (Between 0.10-2.00):</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input id="volacid" name="volacid" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="0.10" min="0.100" max="2.000" step="0.01">
+                            </div>
+                        </div>
+                        <div class="row row-cols-sm-2">
+                            <div class="col-sm-6">
+                                <label for="citacid">Citric Acid (Between 0.00-1.00):</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input id="citacid" name="citacid" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="0.00" min="0.000" max="1.000" step="0.01">
+                            </div>
+                        </div>
+                        <div class="row row-cols-sm-2">
+                            <div class="col-sm-6">
+                                <label for="chlorides">Chlorides (Between 0.010-1.000):</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input id="chlorides" name="chlorides" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(3);})(this)" value="0.010" min="0.010" max="1.000" step="0.001">
+                            </div>
+                        </div>
+                        <div class="row row-cols-sm-2">
+                            <div class="col-sm-6">
+                                <label for="ph">pH (Between 2.50-4.50):</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input id="ph" name="ph" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="2.50" min="2.500" max="4.500" step="0.01">
+                            </div>
+                        </div>
+                        <div class="row row-cols-sm-2">
+                            <div class="col-sm-6">
+                                <label for="sulphates">Sulphates (Between 0.30-2.00):</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input id="sulphates" name="sulphates" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="0.30" min="0.300" max="2.000" step="0.01">
+                            </div>
+                        </div>
+                        <div class="row row-cols-sm-2">
+                            <div class="col-sm-6">
+                                <label for="alcohol">Alcohol (Between 8.0 - 15.0)</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input id="alcohol" name="alcohol" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(1);})(this)" value="8.0" min="8.00" max="15.00" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-block col-4" type="submit" href="main" style="background-color: darkmagenta; color: var(--light)">Predict Quality</button><br>
+                    </center>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

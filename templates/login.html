@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+    <!-- Link to Bootstrap Stylesheet -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">#grad1 {
+				background-color: #F66733; /* For browsers that do not support gradients */
+				background-image: linear-gradient(to bottom right, #522D80, #F66733); /* Standard syntax (must be last) */
+				}
+	</style>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+
+    <title>El Vino Winery</title>
+</head>
+<body class="bg-dark">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">El Vino Winery Labs</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div id="grad1">
+    <div class="row row-cols-1">
+        <div class="col-lg center-block text-center">
+            <img src="{{ url_for('static', filename='images/logo21.png') }}" class="pb-1" width="200" height="200">
+            <div class="row justify-content-center center-block">
+                <form class="form-signin border-light rounded rounded-3 bg-light" action="" method="POST">
+                    <h1 class="form-signin-heading" style="color: var(--purple); text-align: center;">Portal Login</h1>
+                    <p class="text-md-left p-3">Welcome to the El Vino Winery Lab Portal.<br>Please login to continue.</p>
+                    <br>
+                    <center>
+                        <input type="text" class="form-control col-10" name="username" placeholder="Username" value="{{ request.form.username }}"autofocus="" />
+                        <br>
+                        <input type="password" class="form-control col-10" name="password" placeholder="Password" value="{{ request.form.username }}"/>
+                        <br>
+                        <button class="btn btn-lg btn-block col-10" type="submit" href="main" style="background-color: darkmagenta;color: var(--light)">Login</button>
+                        <br>
+                    </center>
+                </form>
+            </div>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    <p class="error text-center" ><strong>Error: </strong>{{ error }}</p>
+                </div>
+            {%endif %}
+        </div>
+    </div><div class="row"><p></p></div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>
